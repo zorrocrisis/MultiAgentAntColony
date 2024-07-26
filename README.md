@@ -8,24 +8,30 @@ The following document indicates how to access the source code and control the c
 
 ## **Quick Start**
 
-### **Windows:**
 1. Clone the repo or download the source code
    - $ git clone https://github.com/zorrocrisis/MultiAgentAntColony
    - $ cd MultiAgentAntColony
 
 1. Create and activate virtual environment (last tested with Python 3.8.10)
-   - $ python3 -m venv venv
+   - $ python -m venv venv
+
+   Windows:
    - $ cd venv\Scripts
    - $ .\activate
+   - $ cd ..
+   - $ cd ..
+
+   Linux:
+   - $ source venv/bin/activate
 
 3. Install dependencies
-   - $ cd ..
-   - $ cd ..
    - $ cd Project
    - $ pip install -r requirements.txt
 
 5. Run the project
-   - $ python3 multi_agent_teams.py
+   - $ python multi_agent_teams.py
+
+### **Linux:**
 
 6. (Optional) Fiddle and play with the values and the teams being tested in the multi_agents_teams.py
    - $ To view the ants moving around, uncommment lines 90 and 91
