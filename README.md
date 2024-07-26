@@ -2,11 +2,6 @@
 This project, originally an evaluation component for the Autonomous Agents and Multi-Agent Systems (AAMAS) course (2023/2024), talking place in Instituto Superior Técnico, University of Lisbon, aimed to establish **a multi-agent environment based on the natural behavior of ants**. More specifically, the goal was to simulate an ant colony with multiple ants (agents) whose goals are to search for food (points of interest). By analyzing how
 these **agents indirectly communicate through pheromones and cooperatively define the best paths to travel between the food and the colony** (home base), we **gain insights on how we can transfer this algorithm to real-life applications**.
 
-GIF
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/bb905197-ad43-483c-a50e-878c030a734d" />
-</p>
-
 The following document indicates how to access the source code and control the corresponding program. It also details the implementation's main features, referring to the [official report](https://github.com/zorrocrisis/MultiAgentAntColony/blob/main/Report%20-%20Multi-agent%20System%20based%20on%20an%20Ant%20Colony%20Behavior.pdf) for more detailed information.
 
 ## **Quick Start**
@@ -15,18 +10,21 @@ The following document indicates how to access the source code and control the c
    - $ git clone https://github.com/zorrocrisis/MultiAgentAntColony
    - $ cd MultiAgentAntColony
 
-1. Create virtual environment (tested with python 3.8.10)
+1. Create and activate virtual environment (tested with python 3.8.10)
    - $ python3 -m venv venv
-   - $ source venv/bin/activate
+   - $ cd venv\Scripts
+   - $ .\activate
 
 3. Install dependencies
+   - $ cd ..
+   - $ cd ..
+   - $ cd Project
    - $ pip install -r requirements.txt
 
-4. Run the project
-   - $ cd Project
+5. Run the project
    - $ python3 multi_agent_teams.py
 
-5. (Optional) Fiddle and play with the values and the teams being tested in the multi_agents_teams.py
+6. (Optional) Fiddle and play with the values and the teams being tested in the multi_agents_teams.py
    - $ To view the ants moving around, uncommment lines 90 and 91
    - $ To change the teams, change the run_multi_agent function accordingly and the n_agents in the environment definition in main, this if you decide to add more agents to the teams
    - $ You can also change other aspects of the environment in main (e.g.: the number of foodpiles)
@@ -42,11 +40,6 @@ location is randomly chosen at the beginning of each simulation run. Each food p
 - **Ant** - an ant is represented by a single black tile. The agent’s initial location is randomly chosen at the beginning of each run. A white text also displays the agent’s id above the black tile. The ant is always surrounded by 4 yellow tiles which aim to represent its "field of action" - the tiles with which the ant can directly interact with. An ant which is carrying food will also turn purple.
 
 - **Pheromone** - a pheromone is represented by a cyan tile. Its placement results from an ant’s movement when carrying food. Each pheromone also displays its current intensity value in white text, which has an initial default value and can be incremented as a result of agents walking over it. Furthermore, pheromones have a global evaporation rate which decrements their intensity values with time (by default, -1 unit/step).
-
-IMAGE OF MAP
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/bb905197-ad43-483c-a50e-878c030a734d" />
-</p>
 
 ## **Agent Architecture**
 For this project four main agent architectures were considered, grounded on the **inherent agent knowledge**, **the underlying sensors** and **actuators**:
