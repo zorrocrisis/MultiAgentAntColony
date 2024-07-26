@@ -31,8 +31,6 @@ The following document indicates how to access the source code and control the c
 5. Run the project
    - $ python multi_agent_teams.py
 
-### **Linux:**
-
 6. (Optional) Fiddle and play with the values and the teams being tested in the multi_agents_teams.py
    - $ To view the ants moving around, uncommment lines 90 and 91
    - $ To change the teams, change the run_multi_agent function accordingly and the n_agents in the environment definition in main, this if you decide to add more agents to the teams
