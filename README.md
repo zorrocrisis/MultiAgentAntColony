@@ -6,7 +6,7 @@ these **agents indirectly communicate through pheromones and cooperatively defin
   <img src="https://github.com/user-attachments/assets/bb905197-ad43-483c-a50e-878c030a734d" />
 </p>
 
-The following document indicates how to access the source code and control the corresponding program. It also details the implementation's main features, referring to the official report for more detailed information.
+The following document indicates how to access the source code and control the corresponding program. It also details the implementation's main features, referring to the [official report](https://github.com/zorrocrisis/MultiAgentAntColony/blob/main/Report%20-%20Multi-agent%20System%20based%20on%20an%20Ant%20Colony%20Behavior.pdf) for more detailed information.
 
 ## **Quick Start**
 
