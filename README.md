@@ -114,7 +114,7 @@ Some tests were run to evaluate the effectiveness of the developed autonomous ag
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/bb8beea9-b0b5-42ba-8763-1ab26a2ac6a4" />
-  <img src=[Threshold_200_graph](https://github.com/user-attachments/assets/e26bb5c4-0082-43ac-b75e-6201b159335d)/>
+  <img src="https://github.com/user-attachments/assets/e26bb5c4-0082-43ac-b75e-6201b159335d"/>
 </p>
 
 <p align="center">
