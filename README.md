@@ -54,7 +54,7 @@ is not the most life-like way of implementing ant agents but it allowed for furt
 </p>
 
 <p align="center">
-  <i>A screenshot of the simulation's environment, where one can identify four ants, one ant colony, pheromones and two remaining foodpiles</i>
+  <i>A screenshot of the simulation's environment, where one can identify four ants, one colony, pheromones and two remaining foodpiles</i>
 </p>
 
 - **Actuators:** **ants can perform 11 different actions, 9 of them related to movement**. The first 4 represent the possible movement directions for when the ant is simply exploring or moving towards a destination - e.g.: "DOWN", "LEFT". Action number 5 corresponds to "STAY", where the agent holds its current position. Action 6-9 represent the possible movement directions for when the ant is carrying food and thus leaving behind a trail of pheromones - e.g.: "DOWN_PHERO", "LEFT_PHERO". Finally, actions 10 and 11 correspond to "COLLECT_FOOD" and "DROP_FOOD". Lastly, the **ant’s field of action is displayed as 4 yellow tiles surrounding its current position**.
