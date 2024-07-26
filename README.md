@@ -48,7 +48,7 @@ location is randomly chosen at the beginning of each simulation run. Each food p
 </p>
 
 <p align="center">
-  <i>A screenshot of the simulation's environment, where one can identify four ants, one colony, pheromones with varying intensity and two remaining foodpiles</i>
+  <i>A screenshot of the simulation's environment, where one can identify four ants (one of which is carrying food), one colony, pheromones with varying intensity and two remaining foodpiles</i>
 </p>
 
 ## **Agent Architecture**
