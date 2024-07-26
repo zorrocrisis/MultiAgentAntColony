@@ -108,7 +108,17 @@ Some tests were run to evaluate the effectiveness of the developed autonomous ag
 </p>
 
 <p align="center">
-  <i>Evolution of the colony's food storage over time</i>
+  <i>Reactive Team's heat maps with halved and doubled pheromone evaporation rates</i>
+</p>
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/bb8beea9-b0b5-42ba-8763-1ab26a2ac6a4" />
+  <img src="https://github.com/user-attachments/assets/bb8beea9-b0b5-42ba-8763-1ab26a2ac6a4" />
+</p>
+
+<p align="center">
+  <i>: Deliberative teams’s average colony storage evolution during 100 time steps, with normal and doubled exploration/exploitation threshold</i>
 </p>
 
 ## **Final Remarks**
