@@ -50,7 +50,7 @@ For this project four main agent architectures were considered, grounded on the 
 is not the most life-like way of implementing ant agents but it allowed for further analysis opportunities by decreasing randomness. It is important to not the agents do not know the global position of any other structure (like food piles)!
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/52e339a3-a32a-4c1b-9175-0ecd7cfae77b" />
+  <img src="https://github.com/user-attachments/assets/7f9e9fc8-fb98-4c9a-9589-62b06db3de5b"/>
 </p>
 
 <p align="center">
