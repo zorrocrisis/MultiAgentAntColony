@@ -31,117 +31,39 @@ The following document indicates how to access the source code and control the c
    - $ You can also change other aspects of the environment in main (e.g.: the number of foodpiles)
 
 ## **Environment Characteristics**
-2.1.1 General Description. The environment is represented by a
-2D, square, grid-like map with variable size. Each component of the
-simulation, including colonies, ants, food piles, and pheromones,
-occupies a single square (or tile) on this map. A more detailed list
-regarding the simulation’s elements is indicated here:
-- Colony - a colony is represented by a single brown tile. Its
-location is randomly chosen at the beginning of each simulation
-run. Each colony also displays its current food supply (initiated at
-100 units, by default), which gradually decrements over time (by
-default, 1 unit/step). Moreover, colonies are tiles which the agents
-can interact with: by performing "DROP_FOOD" near them, they
-can increase the colony’s food supply (by default, 20 units). In its
-current state, only one colony spawns each run.
-- Food pile - a food pile is represented by a single green tile. Its
-location is randomly chosen at the beginning of each simulation
-run. Each food pile also displays its current "food value" in white
-text (which, by default, is either 2, 4, or 6). This value can be decremented if an agent decides to perform "COLLECT_FOOD" near the
-food pile. Normally, multiple food piles are spawned each run.
-- Ant - an ant is represented by a single black tile. The agent’s
-initial location is randomly chosen at the beginning of each run
-(it does not necessarily spawn near a colony - we assume it was
-already exploring the environment when the simulation starts). A
-white text also displays the agent’s id above the black tile. The ant
-is always surrounded by 4 yellow tiles which aim to represent its
-"field of action" - the tiles with which the ant can directly interact
-with. An ant which is carrying food will also turn purple. Since we
-are mostly focusing on a multi-agent environment, multiple ants
-are spawned each run.
-- Pheromone - a pheromone is represented by a cyan tile. Its
-placement results from an ant’s movement when carrying food.
-Each pheromone also displays its current intensity value in white
-text, which has an initial default value and can be incremented asAAMAS’23, 2023, Lisbon, Portugal Carolina Brás, Guilherme Pereira, and Miguel Belbute
-a result of agents walking over it. Furthermore, pheromones have
-a global evaporation rate which decrements their intensity values
-with time (by default, -1 unit/step). Normally, multiple pheromone
-tiles are created each run.
+The environment is represented by a 2D, square, grid-like map with variable size. Each component of the simulation, including colonies, ants, food piles, and pheromones, occupies a single square (or tile) on this map. A more detailed list regarding the simulation’s elements is indicated here:
+
+- **Colony** - a colony is represented by a single brown tile. Its location is randomly chosen at the beginning of each simulation run. Each colony also displays its current food supply (initiated at 100 units, by default), which gradually decrements over time (by default, 1 unit/step). Moreover, colonies are tiles which the agents can interact with: by performing "DROP_FOOD" near them, they can increase the colony’s food supply (by default, 20 units).
+
+- **Food pile** - a food pile is represented by a single green tile. Its
+location is randomly chosen at the beginning of each simulation run. Each food pile also displays its current "food value" in white text (which, by default, is either 2, 4, or 6). This value can be decremented if an agent decides to perform "COLLECT_FOOD" near the food pile. Normally, multiple food piles are spawned each run.
+
+- **Ant** - an ant is represented by a single black tile. The agent’s initial location is randomly chosen at the beginning of each run. A white text also displays the agent’s id above the black tile. The ant is always surrounded by 4 yellow tiles which aim to represent its "field of action" - the tiles with which the ant can directly interact with. An ant which is carrying food will also turn purple.
+
+- **Pheromone** - a pheromone is represented by a cyan tile. Its placement results from an ant’s movement when carrying food. Each pheromone also displays its current intensity value in white text, which has an initial default value and can be incremented as a result of agents walking over it. Furthermore, pheromones have a global evaporation rate which decrements their intensity values with time (by default, -1 unit/step).
+
+IMAGE OF MAP
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/bb905197-ad43-483c-a50e-878c030a734d" />
+</p>
 
 ## **Agent Architecture**
-Each agent in the system has access and interacts with multiple
-sensors and actuators which allow it to perceive and act upon the
-environment, respectively. The way the information received is
-conveyed into actions depends on the agent’s overall architecture.
-In our case, 4 architectures were considered, but before going into
-further detail regarding each of these, we should explain both the
-sensors and actuators utilized.
-2.2.1 Sensors. Each ant possesses a 5 by 5 tiles field of view,
-centered on their current position, which allows them to observe
-the environment and detect important points of interest (such as
-colonies, food piles, pheromones, and other agents) and the corresponding relative positions. This field of view also obtains complementary information when certain elements are in range: the
-colony’s current food supply, food piles’ food quantity, pheromones’
-intensity levels and the amount of food other agents are carrying.
-This data is later conveyed from the environment to each ant in
-the form of observations.
-2.2.2 Knowledge. Apart from the aforementioned observations,
-ants hold some sort of "universal" knowledge related to their virtual
-environment - at every instant, they know their own global position
-and the colony’s global position on the grid. This approximation
-is not the most life-like way of implementing ant agents but it allowed for further analysis opportunities by decreasing randomness.
-Efforts were being made to create an "unknowledgeable" version of
-the agents which did not account for the colony’s global position.
-However, this idea was later scrapped due to time constraints. It is
-important to not the agents do not know the global position of any
-other structure (like food piles)!
-2.2.3 Actuators. Each ant can perform 11 different actions, 9 of
-them related to movement. The first 4 represent the possible movement directions for when the ant is simply exploring or moving
-towards a destination - "DOWN", "LEFT", "UP", "RIGHT". Action
-number 5 corresponds to "STAY", where the agent holds its current
-position. Action 6-9 represent the possible movement directions
-for when the ant is carrying food and thus leaving behind a trail
-of pheromones - "DOWN_PHERO", "LEFT_PHERO", "UP_PHERO",
-"RIGHT_PHERO". Initially, the agents, whether carrying food or not,
-would leave a trail of pheromones behind them as they traversed the
-environment, similar to what happens in real life. The pheromones
-associated with having food would have a higher intensity value
-than the "normal" ones. However, after careful consideration and
-perceiving this as an added unnecessary complexity, we decided
-to disregard the "normal" pheromones. Finally, actions 10 and 11
-correspond to "COLLECT_FOOD" and "DROP_FOOD", which can
-only be performed when the agent does not have food and is near
-a food source, and when it has food and is near a colony, respectively. Lastly, the ant’s field of action is displayed as 4 yellow tiles
-surrounding its current position.
-2.2.4 Decision-Making. As previously mentioned, 4 different
-architectures were explored for the ants’ decision-making behavior:
-random agents, deliberative agents, reactive (greedy) agents, and
-collaborative agents. We will now explain each of these architectures in further detail:
-- Random Agent - as the name suggests, this type of agent performs actions randomly and, therefore, is not expected to perform
-well in the virtual environment. However, it is implemented to offer
-a baseline for comparison with the other architectures. One key
-aspect to note is the following: if the arbitrarily chosen action is
-not valid at a given instance (like dropping food when the agent is
-not carrying any) the environment will not let the ant proceed and
-it will instead consider the "STAY" action.
-- Deliberative Agent - mostly based on the Belief-Desire-Intention
-model (BDI), this agent can, from its perceptions, construct its beliefs (what it sees and what it knows), formulate 1 of 3 possible
-desires ("GO_TO_COLONY", "EXPLORE" and "FIND_FOODPILE")
-and finally work towards those goals by defining intentions. The
-first desire is quite self-explanatory - by default or whenever they
-have food, agents will travel to the colony. "EXPLORE" represents a
-way to "randomly" explore the surrounding environment in hopes
-of finding undiscovered food piles (in reality, in order to prevent a
-chaotic, totally random exploration which may yield few results,
-this desire is associated with a mechanism that arbitrarily chooses
-an action and keeps said action for a given amount of steps, after
-which another non-opposite direction is chosen to move towards.
-This increases the overall effectiveness of exploring the map). Lastly,
-"FIND_FOODPILE" encompasses both traveling to observed food
-sources as well as following intense pheromone trails. To determine
-which desire to choose between these last two, the agents verify the
-food supply of their own colony and, considering a given threshold,
-will "exploit" pheromone trails if the food gets too low and explore
-the map if it is at a comfortable level.Multi-agent System based on an Ant Colony Behavior AAMAS’23, 2023, Lisbon, Portugal
+For this project four main agent architectures were considered, grounded on the **inherent agent knowledge**, **the underlying sensors** and **actuators**:
+
+- **Sensors:** ants possess a **5 by 5 tiles field of view**, centered on their current position. This field of view also obtains complementary information when certain elements are in range: the colony’s current food supply, food piles’ food quantity, pheromones’ intensity levels and the amount of food other agents are carrying.
+
+- **Knowledge:** ants hold some "universal" knowledge related to their virtual environment - at every instant, **agents know their own global position and the colony’s global position on the grid**. This approximation
+is not the most life-like way of implementing ant agents but it allowed for further analysis opportunities by decreasing randomness. It is important to not the agents do not know the global position of any other structure (like food piles)!
+
+- **Actuators:** **ants can perform 11 different actions, 9 of them related to movement**. The first 4 represent the possible movement directions for when the ant is simply exploring or moving towards a destination - e.g.: "DOWN", "LEFT". Action number 5 corresponds to "STAY", where the agent holds its current position. Action 6-9 represent the possible movement directions for when the ant is carrying food and thus leaving behind a trail of pheromones - e.g.: "DOWN_PHERO", "LEFT_PHERO". Finally, actions 10 and 11 correspond to "COLLECT_FOOD" and "DROP_FOOD". Lastly, the **ant’s field of action is displayed as 4 yellow tiles surrounding its current position**.
+
+The **four different agent architectures** consist of the following:
+
+- **Random Agent** - thisagent performs actions randomly and, therefore, is not expected to perform well in the virtual environment, functioning as a baseline for comparison with the other architectures.
+
+- **Deliberative Agent** - mostly **based on the Belief-Desire-Intention model (BDI)**, this agent can, from its perceptions, **construct its beliefs** (what it sees and what it knows), **formulate 1 of 3 possible
+desires** ("GO_TO_COLONY", "EXPLORE" and "FIND_FOODPILE") and finally work towards those goals by **defining intentions**. To determine which desire to choose between the last two, the agents verify the food supply of their own colony and, considering a given threshold, will "exploit" pheromone trails if the food gets too low and explore the map if it is at a comfortable level.
+
 - Reactive Agent - unlike the deliberative agent, the reactive
 agent mainly reacts to and acts upon immediate stimulus from the
 virtual environment in order to accomplish its goals. With regards
@@ -151,6 +73,7 @@ priority endeavor it can assume. If the agent does not possess food,
 it will instead check for food piles in view and if that condition
 fails, then it will resume any pheromone trail it might have been
 following. The lowest priority rule is to, naturally, explore!
+
 - Collaborative Agent - in order to foster collaboration among
 the agents, a reduced movement speed was implemented for ants
 carrying the maximum amount of food (by default, 2 units). A
