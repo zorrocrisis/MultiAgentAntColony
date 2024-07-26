@@ -43,14 +43,6 @@ location is randomly chosen at the beginning of each simulation run. Each food p
 
 - **Pheromone** - a pheromone is represented by a cyan tile. Its placement results from an ant’s movement when carrying food. Each pheromone also displays its current intensity value in white text, which has an initial default value and can be incremented as a result of agents walking over it. Furthermore, pheromones have a global evaporation rate which decrements their intensity values with time (by default, -1 unit/step).
 
-## **Agent Architecture**
-For this project four main agent architectures were considered, grounded on the **inherent agent knowledge**, **the underlying sensors** and **actuators**:
-
-- **Sensors:** ants possess a **5 by 5 tiles field of view**, centered on their current position. This field of view also obtains complementary information when certain elements are in range: the colony’s current food supply, food piles’ food quantity, pheromones’ intensity levels and the amount of food other agents are carrying.
-
-- **Knowledge:** ants hold some "universal" knowledge related to their virtual environment - at every instant, **agents know their own global position and the colony’s global position on the grid**. This approximation
-is not the most life-like way of implementing ant agents but it allowed for further analysis opportunities by decreasing randomness. It is important to not the agents do not know the global position of any other structure (like food piles)!
-
 <p align="center">
   <img src="https://github.com/user-attachments/assets/2e354f83-4053-4b97-a830-781c46bef152"/>
 </p>
@@ -58,6 +50,14 @@ is not the most life-like way of implementing ant agents but it allowed for furt
 <p align="center">
   <i>A screenshot of the simulation's environment, where one can identify four ants, one colony, pheromones with varying intensity and two remaining foodpiles</i>
 </p>
+
+## **Agent Architecture**
+For this project four main agent architectures were considered, grounded on the **inherent agent knowledge**, **the underlying sensors** and **actuators**:
+
+- **Sensors:** ants possess a **5 by 5 tiles field of view**, centered on their current position. This field of view also obtains complementary information when certain elements are in range: the colony’s current food supply, food piles’ food quantity, pheromones’ intensity levels and the amount of food other agents are carrying.
+
+- **Knowledge:** ants hold some "universal" knowledge related to their virtual environment - at every instant, **agents know their own global position and the colony’s global position on the grid**. This approximation
+is not the most life-like way of implementing ant agents but it allowed for further analysis opportunities by decreasing randomness. It is important to not the agents do not know the global position of any other structure (like food piles)!
 
 - **Actuators:** **ants can perform 11 different actions, 9 of them related to movement**. The first 4 represent the possible movement directions for when the ant is simply exploring or moving towards a destination - e.g.: "DOWN", "LEFT". Action number 5 corresponds to "STAY", where the agent holds its current position. Action 6-9 represent the possible movement directions for when the ant is carrying food and thus leaving behind a trail of pheromones - e.g.: "DOWN_PHERO", "LEFT_PHERO". Finally, actions 10 and 11 correspond to "COLLECT_FOOD" and "DROP_FOOD". Lastly, the **ant’s field of action is displayed as 4 yellow tiles surrounding its current position**.
 
