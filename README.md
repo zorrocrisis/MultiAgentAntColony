@@ -62,7 +62,7 @@ desires** ("GO_TO_COLONY", "EXPLORE" and "FIND_FOODPILE") and finally work towar
 
 - **Collaborative Agent** - in order to **foster collaboration among the agents**, a reduced movement speed was implemented for ants carrying the maximum amount of food (by default, 2 units). A collaborative behavior was introduced, wherein **if a certain ant observes another carrying 2 units of food, it will take half of that amount**. This cooperative action allows both ants to move faster and expedite the delivery of food to the colonies. 
 
-## **Multi-agent system
+## **Multi-agent system**
 With the aforementioned architectures, a **multi-agent system was developed**, exhibiting the following traits: **communication** (agents indirectly communicate through pheromones in order to coordinate their actions) and **coordination** (agents collectively examine unexplored areas and, once an agent identifies a path to a food source, it marks the trail, allowing other agents in the colony to follow it without redundancy or conflicts. On the other hand, in the collaborative agent scenario, two agents are able to transport the same amount of food in a more timely manner by helping one another).
 
 ## **Comparative Evaluation**
