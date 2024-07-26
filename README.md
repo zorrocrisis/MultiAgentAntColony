@@ -59,146 +59,27 @@ is not the most life-like way of implementing ant agents but it allowed for furt
 
 The **four different agent architectures** consist of the following:
 
-- **Random Agent** - thisagent performs actions randomly and, therefore, is not expected to perform well in the virtual environment, functioning as a baseline for comparison with the other architectures.
+- **Random Agent** - this agent performs actions randomly and, therefore, is not expected to perform well in the virtual environment, functioning as a baseline for comparison with the other architectures.
 
 - **Deliberative Agent** - mostly **based on the Belief-Desire-Intention model (BDI)**, this agent can, from its perceptions, **construct its beliefs** (what it sees and what it knows), **formulate 1 of 3 possible
 desires** ("GO_TO_COLONY", "EXPLORE" and "FIND_FOODPILE") and finally work towards those goals by **defining intentions**. To determine which desire to choose between the last two, the agents verify the food supply of their own colony and, considering a given threshold, will "exploit" pheromone trails if the food gets too low and explore the map if it is at a comfortable level.
 
-- Reactive Agent - unlike the deliberative agent, the reactive
-agent mainly reacts to and acts upon immediate stimulus from the
-virtual environment in order to accomplish its goals. With regards
-to the implementation, we mostly followed a set of condition-action
-rules with varying priorities. For example, if the agent detects having food, it will move towards the colony, this being the highest
-priority endeavor it can assume. If the agent does not possess food,
-it will instead check for food piles in view and if that condition
-fails, then it will resume any pheromone trail it might have been
-following. The lowest priority rule is to, naturally, explore!
+- **Reactive Agent** - this agent mainly **reacts to and acts upon immediate stimulus from the virtual environment** in order to accomplish its goals. With regards to the implementation, we mostly followed a **set of condition-action rules** with varying priorities. For example, if the agent detects having food, it will move towards the colony, this being the highest priority endeavor it can assume. If the agent does not possess food, it will instead check for food piles in view. following.
 
-- Collaborative Agent - in order to foster collaboration among
-the agents, a reduced movement speed was implemented for ants
-carrying the maximum amount of food (by default, 2 units). A
-collaborative behavior was introduced, wherein if a certain ant
-observes another carrying 2 units of food, it will take half of that
-amount. This cooperative action allows both ants to move faster
-and expedite the delivery of food to the colonies. For this architecture, 2 roles were defined: "GO_HELP" and "GO_WORK." In the
-former, the potential was determined as the negative value of the
-Manhattan distance between the agent’s position and the position
-of the observed ant carrying food. In the latter role was used as a
-default with a higher potential than "GO_HELP" (when the agent
-does not observe any ant carrying food). The potential changes
-when the agent sees a food pile, becoming zero in that case. A new
-desire, "GO_HELP," was also added to support the food collection
-action of the ant carrying the maximum amount of food. When
-the agent’s role is set as "GO _HELP," it will update its desire accordingly. Conversely, if the agent’s role is "GO _WORK," it will
-continue to follow the pre-established loop of desires and actions
-already defined in the deliberative agents.
+- **Collaborative Agent** - in order to **foster collaboration among the agents**, a reduced movement speed was implemented for ants carrying the maximum amount of food (by default, 2 units). A collaborative behavior was introduced, wherein **if a certain ant observes another carrying 2 units of food, it will take half of that amount**. This cooperative action allows both ants to move faster and expedite the delivery of food to the colonies. 
 
 ## **Multi-agent system
-With the aforementioned architectures, a multi-agent system was
-developed, exhibiting the following traits: communication (agents
-indirectly communicate through pheromones in order to coordinate their actions) and coordination (agents collectively examine
-unexplored areas and, once an agent identifies a path to a food
-source, it marks the trail, allowing other agents in the colony to
-follow it without redundancy or conflicts. On the other hand, in
-the collaborative agent scenario, two agents are able to transport
-the same amount of food in a more timely manner by helping one
-another).
+With the aforementioned architectures, a **multi-agent system was developed**, exhibiting the following traits: **communication** (agents indirectly communicate through pheromones in order to coordinate their actions) and **coordination** (agents collectively examine unexplored areas and, once an agent identifies a path to a food source, it marks the trail, allowing other agents in the colony to follow it without redundancy or conflicts. On the other hand, in the collaborative agent scenario, two agents are able to transport the same amount of food in a more timely manner by helping one another).
 
 ## **Comparative Evaluation**
-Considering all the previously mentioned characteristics of the implemented system, some tests were run to evaluate the effectiveness
-of the developed autonomous agents. These tests were separated
-into two distinct groups - the first one is aimed at studying the
-decision-making processes of multi-agent teams, while the second
-one is focused on the effect of environmental and behavioral parameters on overall performance. All the tests were performed on
-a 16x16 map, with a single colony and 4 food piles.
+Some tests were run to evaluate the effectiveness of the developed autonomous agents. These tests were separated into two distinct groups - the first one is aimed at **studying the decision-making processes of multi-agent teams**, while the second one is focused on **the effect of environmental and behavioral parameters on overall performance**.
 
-3.1 Decision-Making Analysis
-For the first group of testing, 4 different teams were considered:
-Random Team (4 random agents), Deliberative Team (4 deliberative
-agents), Reactive Team (4 reactive agents), and Hybrid Team (2 deliberative agents and 2 reactive agents). These teams will henceforth
-be referred to as RT, DT, ReT, and HT, respectively. Each multi-agent
-team was tested in the same 100 maps (a different one per episode),
-in order to closely approximate evaluations conditions.
-3.1.1 Heat Map Analysis. In this first study, 3 heat maps were
-generated per team: after the first episode, at the middle of the test
-run and at the last episode, each respectively represented by (a), (b)
-and (c). Each episode terminated as soon as 100 steps were reached
-or when all the food was depleted.
-- RT: since the agents perform random actions at each time step,
-they show unorganized movement patterns, with no significant connections being accomplished between the colony and the food piles.
-This is corroborated by the presence of small hot spots throughout the grid, independently of episode number, most likely each
-corresponding to one of the agents of the team.
-Figure 1: RT’s heat maps for episodes 0, 50 and 100
-- DT: in relation to the previous team, the deliberative agents
-explore a bigger portion of the environment, being noticeable in
-the multiple constructed paths connecting the colony to the food
-piles. One should also note how there is a significant concentration
-of "heat" near the colony. This is due to deliberative agents’ implementation - recollect how, by default (whenever the agents do
-not have another desire), they ponder their next goal by traveling
-to the colony and verifying its food level, in hopes of balancing
-exploration and exploitation.
-Figure 2: DT’s heat maps for episodes 0, 50 and 100
-- ReT: the reactive agents seem to share somewhat similar heat
-maps to the deliberative agents, although their exploration efforts
-are far lesser than the latter - their quick responsiveness favours
-immediate rewards (food piles close to the colony), thus not allowing a deeper exploration of the environment.AAMAS’23, 2023, Lisbon, Portugal Carolina Brás, Guilherme Pereira, and Miguel Belbute
-Figure 3: ReT’s heat maps for episodes 0, 50 and 100
-- HT: finally, the hybrid team also displays satisfactory results
-- the joint efforts of deliberative and reactive agents promote the
-discovery of the environment, whilst maintaining a certain urgency
-in exploiting food piles... Whereas the deliberative ants can focus
-more on exploration (discovering new food piles, possibly), the
-reactive agents act quickly to follow known pheromone paths (laid
-mostly by the deliberative agents) and raise the colony’s food level
-in a timely manner.
-Figure 4: HT’s heat maps for episodes 0, 50 and 100
-3.1.2 Time Taken To Complete Environment. In this study, the
-simulation was run 3 times, each producing a graph that compares
-the time steps each team needed to complete the simulation, either
-by collecting all the food or by running out of time (reaching a
-maximum of 100 time steps). Observing Figure 5, the results for
-each team are quite similar - unfortunately, in most episodes the
-agents failed to collect all of the environment’s food within the time
-limit. Despite this, an important remark can be made: on average,
-the reactive (greedy) agents managed to complete the environment faster than the deliberative agents (although only by a small
-margin). This does make sense if one recalls the more "plannedout"/"conservative" model of the deliberative agents, despite them
-seemingly exploring more, as we could tell from the results of the
-previous study. HT appears to be the middle-term between DT
-and ReT (as one would expect), but we cannot necessarily say it
-performs better than DT. By increasing the time limit to 200, we
-managed to achieve a graph (Figure 6) which confirms our initial
-conclusion - given a time constraint, RT performs better than DT.
-3.1.3 Food Storage Evolution. This study aimed to analyze the
-colony’s food storage evolution in order to once again get a grasp
-on the speed at which the different teams explored the environment
-and consequently gathered food. Supporting the last study’s results,
-we can tell from Figure 7 that ReT managed to reach a higher food
-quantity (say, 130) sooner than the remaining teams. The highest
-recorder food level for ReT was also greater than the other teams
-- 160, in comparison to HT’s 150 and DT’s 130. Despite this, HT
-Figure 5: Team comparison regarding environment completion (100 steps, one of the runs)
-Figure 6: Team comparison regarding environment completion (200 steps)
-managed to overtake RT after around 75 steps, while DT did so
-after around 85 steps, having both finished with a greater food
-storage level! Considering all this information, one can state that
-despite ReT’s speed in gathering a considerable amount of food, the
-reactive agent’s strategy is quite "volatile", being mostly limited by
-the immediate surroundings of the colony (which is explored in aMulti-agent System based on an Ant Colony Behavior AAMAS’23, 2023, Lisbon, Portugal
-few time steps, hence the greater food collection speed and higher
-maximum food storage reached). After that initial area is explored,
-reactive agents have a harder time exploring the environment,
-similar to what is displayed with the heat maps. Although DT and
-HT took a longer period to gather food, they are clearly preferable
-options on the long term (and, extrapolating, considering a larger
-environment.) By incorporating the collaborative agents into the
-simulation, we also introduced the factor of reduced speed for the
-ants carrying the maximum load. This factor affects our final results,
-making it challenging to obtain reliable outcomes when comparing
-the different agent architectures against each other. To make a more
-accurate comparison, it would have been beneficial to include the
-same factor of reduced speed in the other agents as well. This would
-have allowed for a more comprehensive evaluation of the different
-agent architectures.
+- **Decision-Making Analysis** - four different teams were considered: Random Team (4 random agents), Deliberative Team (4 deliberative agents), Reactive Team (4 reactive agents), and Hybrid Team (2 deliberative agents and 2 reactive agents) - RT, DT, ReT, and HT, respectively. A **heat map analysis** was performed, alongside a **comparison of time taken to "complete" the entire environment** and a **graphical evolution of the ant colony's food storage**.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/36437fa3-0ff6-4f63-a223-af01f2b75054" />
+</p>
+<i>Example of a heat map from the deliberative team</i>
 
 Environmental and Behavioral Parameter Analysis
 For the second group of testing, environmental and behavioral
