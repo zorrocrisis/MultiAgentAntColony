@@ -118,27 +118,22 @@ Some tests were run to evaluate the effectiveness of the developed autonomous ag
 </p>
 
 <p align="center">
-  <i>: Deliberative teams’s average colony storage evolution during 100 time steps, with normal and doubled exploration/exploitation threshold</i>
+  <i>Deliberative teams’s average colony storage evolution during 100 time steps, with normal and doubled exploration/exploitation threshold</i>
 </p>
 
 ## **Final Remarks**
-To sum up all the different findings, we have verified that the efficiency of an ant colony multi-agent system in finding pathways to
-unknown points of interest is highly dependent on the architecture
-applied and contextual setting. Generally speaking, for faster results, one should opt for reactive agents, which prioritize immediate
-actions and quickly exploit a small area of the map. However, in
-applications that require longer periods of contact with the environment, deliberative agents or even a hybrid team are options to
-consider. If one would take computational time into consideration,
-then reactive agents would surely come up on top. That being said,
-another viable option could be an increased amount of reactive
-agents per team - this would improve the exploration area without losing the previously mentioned advantages of these agents. Lastly,
-although we were unable to compare the outcomes of the collaborative agents directly, we infer that the mutual assistance among ants proves to be an efficient solution to the slower movement of
-the food-carrying ants
+**The efficiency of an ant colony multi-agent system in finding pathways to unknown points of interest is highly dependent on the architecture applied and contextual setting**.
+
+Generally speaking, **for faster results, one should opt for reactive agents, which prioritize immediate actions and quickly exploit a small area of the map**. However, **in applications that require longer periods of contact with the environment, deliberative agents or even a hybrid team are options to consider**.
+
+If one would take computational time into consideration, then reactive agents would surely come up on top. That being said, **another viable option could be an increased amount of reactive agents per team** - this would improve the exploration area without losing the previously mentioned advantages of these agents.
+
+Lastly, although we were unable to compare the outcomes of the collaborative agents directly, we infer that the mutual assistance among ants proves to be an efficient solution to the slower movement of the food-carrying ants.
 
 ## **Additional Information**
-For more information about this project, you can read the final report here. This documents contains 
+For more information about this project, you can read the [final report](https://github.com/zorrocrisis/MultiAgentAntColony/blob/main/Report%20-%20Multi-agent%20System%20based%20on%20an%20Ant%20Colony%20Behavior.pdf).
   
 ## **Authors and Acknowledgements**
-
 This project was developed by **[Miguel Belbute (zorrocrisis)](https://github.com/zorrocrisis)**, **[Carolina Brás](https://github.com/carolinabras)** and **[Guilherme Pereira](https://github.com/the-Kob)**.
 
 The initial code was supplied by **[Prof. Rui Prada](https://fenix.tecnico.ulisboa.pt/homepage/ist32219)**.
