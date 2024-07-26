@@ -12,7 +12,7 @@ The following document indicates how to access the source code and control the c
    - $ git clone https://github.com/zorrocrisis/MultiAgentAntColony
    - $ cd MultiAgentAntColony
 
-1. Create and activate virtual environment (tested with python 3.8.10)
+1. Create and activate virtual environment (last tested with Python 3.8.10)
    - $ python3 -m venv venv
    - $ cd venv\Scripts
    - $ .\activate
@@ -52,7 +52,7 @@ For this project four main agent architectures were considered, grounded on the 
 is not the most life-like way of implementing ant agents but it allowed for further analysis opportunities by decreasing randomness. It is important to not the agents do not know the global position of any other structure (like food piles)!
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/077589e8-13e5-406e-b96c-9a3f89dd5606"/>
+  <img src="https://github.com/user-attachments/assets/2e354f83-4053-4b97-a830-781c46bef152"/>
 </p>
 
 <p align="center">
