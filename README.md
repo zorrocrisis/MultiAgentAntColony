@@ -74,7 +74,7 @@ With the aforementioned architectures, a **multi-agent system was developed**, e
 ## **Comparative Evaluation**
 Some tests were run to evaluate the effectiveness of the developed autonomous agents. These tests were separated into two distinct groups - the first one is aimed at **studying the decision-making processes of multi-agent teams**, while the second one is focused on **the effect of environmental and behavioral parameters on overall performance**.
 
-- **Decision-Making Analysis** - four different teams were considered: Random Team (4 random agents), Deliberative Team (4 deliberative agents), Reactive Team (4 reactive agents), and Hybrid Team (2 deliberative agents and 2 reactive agents) - RT, DT, ReT, and HT, respectively. A **heat map analysis** was performed, alongside a **comparison of time taken to "complete" the entire environment** and a **graphical evolution of the ant colony's food storage**.
+- **Decision-Making Analysis** - four different teams were considered: Random Team (4 random agents), Deliberative Team (4 deliberative agents), Reactive Team (4 reactive agents), and Hybrid Team (2 deliberative agents and 2 reactive agents). A **heat map analysis** was performed, alongside a **comparison of steps taken to "complete" the entire environment** and a **graphical evolution of the ant colony's food storage**. For more information, please refer back to the [full report](https://github.com/zorrocrisis/MultiAgentAntColony/blob/main/Report%20-%20Multi-agent%20System%20based%20on%20an%20Ant%20Colony%20Behavior.pdf).
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/36437fa3-0ff6-4f63-a223-af01f2b75054" />
@@ -84,53 +84,32 @@ Some tests were run to evaluate the effectiveness of the developed autonomous ag
   <i>Example of a heat map from the deliberative team</i>
 </p>
 
-Environmental and Behavioral Parameter Analysis
-For the second group of testing, environmental and behavioral
-parameters were modified to analyze their implications on the overall performance of the agents. In the first study, the previously
-mentioned teams were used, whereas in the second one, only deliberative agents took part.
-3.2.1 Effect of Pheromones’ Evaporation Rate. For this study,
-the pheromone’s evaporation rate was manipulated as a means
-to test its influence on the multi-agent system’s balance between
-exploration and exploitation. The value of this rate was halved (-0.5
-units/step) and doubled (-2 units/step), yielding the results below.
-One would expect that increasing the pheromone’s evaporation
-rate would make it harder for the agents to indirectly communicate
-pathways to different food piles, thus enabling hot spots on the
-heat map (in other words, agents would have difficulties reaching
-the same food piles multiple times). However, the heat maps for
-the same agent type are approximately the same, which contradicts
-this hypothesis. Except for the ReT: reactive agents clearly have
-a higher tendency to explore the environment if the evaporation
-rate increases (notice how with the doubled rate, agents explore
-a much wider region of the map), displaying some sensitivity to
-this behavioral parameter. In the other agent architectures, this
-sensitivity is not significant.
-Figure 8: RT’s heat maps, episode 100, evap. rate halved and
-doubled
-Figure 9: DT’s heat maps, episode 100, evap. rate halved and
-doubled
-Figure 10: ReT’s heat maps, episode 100, evap. rate halved
-and doubled
-3.2.2 Exploration/Exploitation Threshold. Lastly, this final study
-was developed to examine the effect of the exploration/exploitation
-threshold considered in the deliberative architecture: as an ant
-approaches the colony, it verifies its food level and based on said
-value determines the best course of action - explore or exploit (any
-value below the threshold corresponds to the desire of actively
-looking for food piles and pheromones, whereas a value above this
-threshold induces exploration). This threshold’s default quantityAAMAS’23, 2023, Lisbon, Portugal Carolina Brás, Guilherme Pereira, and Miguel Belbute
-Figure 11: HT’s heat maps, episode 100, evap. rate halved and
-doubled
-(50 units in colony storage) was increased to 200 units and the
-results are explicit, besides expected: a lower threshold foments
-exploration and vastly expands the portion of the environment
-covered by the agents, as seen in Figure 12. We can also analyze
-the colony storage’s evolution considering the different thresholds,
-as seen in Figure 13: allowing a higher threshold results in a more
-"conservative" behavior which, in actuality, hinders the colony storage’s evolution - the maximum food level reached is lower, as well
-as the final food level. These results go to show the importance of
-balancing exploration and exploitation in the deliberative agent
-architecture.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/13c56b80-ce31-49e8-9cb1-c93929592cb4" />
+</p>
+
+<p align="center">
+  <i>Graphical analysis of the steps taken to complete the entire environment (in this scenario, 200 is the limit)</i>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2db68106-164d-46a0-97c9-5bb7c1bac46d" />
+</p>
+
+<p align="center">
+  <i>Evolution of the colony's food storage over time</i>
+</p>
+
+- **Environmental and Behavioral Parameter Analysis** - more specifically, the **pheromone’s evaporation rate was manipulated as a means to test its influence on the multi-agent system’s balance between exploration and exploitation**. Additionally, the **exploration/exploitation threshold considered in the deliberative architecture was also studied**: as an ant approaches the colony, it verifies its food level and based on said value determines the best course of action - explore or exploit (any value below the threshold corresponds to the desire of actively looking for food piles and pheromones, whereas a value above this threshold induces exploration)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/bed36148-bae9-44ea-9bb4-a9e147ec68d5" />
+  <img src="https://github.com/user-attachments/assets/2cb17c3e-9237-40ec-8649-1b7143d9a9db" />
+</p>
+
+<p align="center">
+  <i>Evolution of the colony's food storage over time</i>
+</p>
 
 ## **Final Remarks**
 To sum up all the different findings, we have verified that the efficiency of an ant colony multi-agent system in finding pathways to
