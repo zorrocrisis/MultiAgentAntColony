@@ -11,7 +11,7 @@ The following document indicates how to access the source code and control the c
 ## **Quick Start**
 
 1. Clone the repo or download the source code
-    $ git clone https://github.com/zorrocrisis/MultiAgentAntColony
+   $ git clone https://github.com/zorrocrisis/MultiAgentAntColony
     $ cd MultiAgentAntColony
 
 1. Create virtual environment (tested with python 3.8.10)
