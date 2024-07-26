@@ -79,7 +79,10 @@ Some tests were run to evaluate the effectiveness of the developed autonomous ag
 <p align="center">
   <img src="https://github.com/user-attachments/assets/36437fa3-0ff6-4f63-a223-af01f2b75054" />
 </p>
-<i>Example of a heat map from the deliberative team</i>
+
+<p align="center">
+  <i>Example of a heat map from the deliberative team</i>
+</p>
 
 Environmental and Behavioral Parameter Analysis
 For the second group of testing, environmental and behavioral
