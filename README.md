@@ -8,7 +8,7 @@ The following document indicates how to access the source code and control the c
 
 ## **Quick Start**
 
-# **Windows:**
+### **Windows:**
 1. Clone the repo or download the source code
    - $ git clone https://github.com/zorrocrisis/MultiAgentAntColony
    - $ cd MultiAgentAntColony
