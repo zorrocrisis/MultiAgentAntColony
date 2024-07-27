@@ -1,5 +1,5 @@
 # **Multi-agent System based on an Ant Colony Behavior**
-This project, originally an evaluation component for the Autonomous Agents and Multi-Agent Systems (AAMAS) course (2023/2024), talking place in Instituto Superior Técnico, University of Lisbon, aimed to establish **a multi-agent environment based on the natural behavior of ants**. More specifically, the goal was to simulate an ant colony with multiple ants (agents) whose goals are to search for food (points of interest). By analyzing how
+This project, originally an evaluation component for the Autonomous Agents and Multi-Agent Systems (AAMAS) course (2022/2023), talking place in Instituto Superior Técnico, University of Lisbon, aimed to establish **a multi-agent environment based on the natural behavior of ants**. More specifically, the goal was to simulate an ant colony with multiple ants (agents) whose goals are to search for food (points of interest). By analyzing how
 these **agents indirectly communicate through pheromones and cooperatively define the best paths to travel between the food and the colony** (home base), we **gain insights on how we can transfer this algorithm to real-life applications**.
 
 https://github.com/user-attachments/assets/1322dacc-b22b-48c6-b927-f03dc40c43a7
